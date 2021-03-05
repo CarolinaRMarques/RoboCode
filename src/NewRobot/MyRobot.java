@@ -12,13 +12,19 @@ public class MyRobot extends AdvancedRobot{
 	double actualY;
 	double actualX;
 
+	private boolean scanningObject;
+	
 	public void run() {
+		setAdjustGunForRobotTurn(true);
+		setAdjustRadarForGunTurn(true);
+		
 		addCustomEvent(standardOdometer);
-		addCustomEvent(odometer);
+		addCustomEvent(this.odometer);
 
-		//setTurnGunRight(calcAngle(18,18));
-		turnRight(calcAngle(18,18));
-		ahead(100);
+		scanningObject = true;
+		goTo(18,18);
+
+
 	}
 
 	public void onCustomEvent (CustomEvent ev) {
@@ -30,7 +36,6 @@ public class MyRobot extends AdvancedRobot{
 	}
 
 	private void goTo(double x, double y){
-
 		x -= getX();
 		y -= getY();
 
@@ -58,12 +63,24 @@ public class MyRobot extends AdvancedRobot{
 		}
 	}
 
-	private void rotate() {
-		//Calcular angulos e apontar radar e arma para a posição
-
-
+	private void findPath() {
+		//1º passo : scan por robo no 
+		
 	}
 
+	@Override
+    public void onScannedRobot(ScannedRobotEvent event) {	
+        super.onScannedRobot(event);
+	    // Assuming radar and gun are aligned...       
+	    if (scanningObject)
+		    {
+				setTurnRadarRight(360);
+		    }
+	    else
+		    {
+		        fire(1);
+		    }
+	}
 
 
 }
