@@ -17,8 +17,7 @@ public class MyRobot extends AdvancedRobot{
 		addCustomEvent(odometer);
 
 		//setTurnGunRight(calcAngle(18,18));
-		turnRight(calcAngle(18,18));
-		ahead(100);
+		goTo(18,18);
 	}
 
 	public void onCustomEvent (CustomEvent ev) {
@@ -30,8 +29,8 @@ public class MyRobot extends AdvancedRobot{
 	}
 
 	private void goTo(double x, double y){
-		x = getX();
-		y = getY();
+		x -= getX();
+		y -= getY();
 
 		/* Calculate the angle to the target position */
 		double angleToTarget = Math.atan2(x, y);
