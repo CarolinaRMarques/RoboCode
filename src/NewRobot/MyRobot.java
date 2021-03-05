@@ -23,8 +23,6 @@ public class MyRobot extends AdvancedRobot{
 
 		scanningObject = true;
 		goTo(18,18);
-
-
 	}
 
 	public void onCustomEvent (CustomEvent ev) {
@@ -64,7 +62,7 @@ public class MyRobot extends AdvancedRobot{
 	}
 
 	private void findPath() {
-		//1บ passo : scan por robo no 
+		//1ยบ passo : scan por robo no 
 		
 	}
 
