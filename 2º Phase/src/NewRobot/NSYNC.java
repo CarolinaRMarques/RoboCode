@@ -118,17 +118,16 @@ public class NSYNC extends TeamRobot {
 		if (e.getMessage() instanceof DanceOrder) {
 			DanceOrder o = (DanceOrder) e.getMessage();
 			msgReceived++;
-			System.out.println(e.getSender() + " is ready! " + msgReceived);
+			System.out.println(e.getSender() + " is ready!");
 
 			if (msgReceived == 4) {
 					msgReceived = 0;
 					String[] teammates = getTeammates();
 					for (String member : teammates) {
 						try {
-							System.out.println("Sending to " + member);
+							System.out.println("Sending dance order to " + member);
 							sendMessage(member, o.getRotation());
 						} catch (IOException ioException) {
-							System.out.println("Here " + member);
 							ioException.printStackTrace();
 						}
 					}
@@ -150,7 +149,6 @@ public class NSYNC extends TeamRobot {
 						System.out.println("Sending to " + member);
 						sendMessage(member, rotationV);
 					} catch (IOException ioException) {
-						System.out.println("Here " + member);
 						ioException.printStackTrace();
 					}
 				}
